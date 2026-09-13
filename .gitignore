@@ -1,0 +1,67 @@
+# =========================
+# Python / Django
+# =========================
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django
+*.sqlite3
+*.sqlite3-journal
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Django collected/static files
+staticfiles/
+media/
+
+# =========================
+# Node / React / Vite
+# =========================
+
+node_modules/
+dist/
+build/
+.vite/
+
+# Environment variables
+frontend/.env
+frontend/.env.*
+!frontend/.env.example
+
+# =========================
+# Editor / OS
+# =========================
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/extensions.json
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# =========================
+# Compiled files
+# =========================
+
+*.exe
+*.out
+*.o
+*.obj

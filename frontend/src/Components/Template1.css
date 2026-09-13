@@ -1,0 +1,76 @@
+.resume-container {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50px;
+}
+
+.resume-wrapper {
+    background: white;
+    padding: 40px;
+    min-width: 794px; /* A4 width at 96dpi */
+    min-height: 1122px;
+    transition: transform 0.2s ease;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.resume-header {
+    border-bottom: 2px solid #007bff;
+    margin-bottom: 20px;
+}
+
+.resume-header .name {
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.resume-section {
+    margin-bottom: 15px;
+}
+
+.resume-section h2 {
+    font-size: 1.3rem;
+    color: #007bff;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+}
+
+.skill-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.skill-dots {
+    display: flex;
+    gap: 5px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid #007bff;
+}
+
+.dot.filled {
+    background-color: #007bff;
+}
+
+@media print {
+    body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+

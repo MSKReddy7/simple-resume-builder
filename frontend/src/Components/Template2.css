@@ -1,0 +1,93 @@
+.resume-wrapper-template2 {
+    width: 794px;
+    min-height: 1122px;
+    display: flex;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar {
+    background: #0d6efd;
+    color: white;
+    width: 30%;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.sidebar-header p {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.sidebar-section h3 {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    font-size: 1.1rem;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar-section li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.main-content h2 {
+    color: #0d6efd;
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.main-content section {
+    margin-bottom: 20px;
+}
+
+.main-content p,
+.main-content li {
+    font-size: 0.95rem;
+}
+
+.skill-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.skill-name {
+    font-size: 0.9rem;
+}
+
+.skill-dots {
+    display: flex;
+    gap: 4px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1px solid white;
+}
+
+.dot.filled {
+    background-color: white;
+}

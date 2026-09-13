@@ -1,0 +1,88 @@
+.resume-wrapper-template3 {
+    background: #fff;
+    width: 794px;
+    min-height: 1122px;
+    padding: 50px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+    border-bottom: 3px solid #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.header h1 {
+    margin-bottom: 5px;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 0.95rem;
+    color: #555;
+}
+
+section {
+    margin-bottom: 15px;
+}
+
+section h2 {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 8px;
+    padding-bottom: 3px;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+}
+
+.tag-list li {
+    border: 1px solid #555;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* === Clean Skill Display === */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-top: 8px;
+}
+
+.skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+    font-size: 0.95rem;
+}
+
+.skill-name {
+    font-weight: 500;
+    flex: 1;
+}
+
+.skill-dots {
+    display: flex;
+    gap: 6px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1.5px solid #000;
+}
+
+.dot.filled {
+    background-color: #000;
+}
