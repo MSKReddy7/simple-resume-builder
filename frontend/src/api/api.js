@@ -1,9 +1,9 @@
 // src/api.js
 import axios from "axios";
 
-const BASE_URL = "http://127.0.0.1:8000/api/validate";
+// const BASE_URL = "http://127.0.0.1:8000/api/validate";
 
-// const BASE_URL = "https://f4smj01g-8000.inc1.devtunnels.ms/api/validate";
+const BASE_URL = "https://simple-resume-builder-api.onrender.com/api/validate";
 
 const postRequest = async (endpoint, data) => {
     try {
