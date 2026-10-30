@@ -96,7 +96,7 @@ python manage.py migrate
 python manage.py runserver 127.0.0.1:8000
 ```
 
-The frontend currently targets `http://127.0.0.1:8000/api/validate`, so keep the backend running at that address while using the form.
+The frontend is currently configured to use the deployed Render API by default. To send local form validation requests to the local Django server instead, change `BASE_URL` in `frontend/src/api/api.js` to `http://127.0.0.1:8000/api/validate` while developing, then restore the Render URL before building for deployment.
 
 ### 2. Start the React frontend
 
@@ -109,6 +109,30 @@ npm run dev
 ```
 
 Open the local URL printed by Vite (by default, `http://localhost:5173`). The landing page should load; choose **Start Building** to enter the form.
+
+## Deployment
+
+The deployed application uses two separate services:
+
+- **Frontend:** GitHub Actions builds the Vite app and deploys `frontend/dist` to GitHub Pages. The workflow is defined in `.github/workflows/deploy.yaml`; it runs on pushes to `main` and can also be started manually with `workflow_dispatch`. The deployed frontend is available at [https://mskreddy7.github.io/simple-resume-builder/](https://mskreddy7.github.io/simple-resume-builder/).
+- **Backend:** Django REST API is hosted separately on Render at `https://simple-resume-builder-api.onrender.com`. The frontend sends validation requests to this API; the GitHub Actions workflow deploys the frontend to Pages and does not deploy the backend to Render.
+
+The Pages build uses Node.js 22, runs `npm ci` and `npm run build`, then uploads `frontend/dist` and deploys it. The frontend build is configured for the `/simple-resume-builder/` project path, and creates a `404.html` fallback for client-side routes.
+
+For the Render backend, configure the service to install dependencies from `backend/requirements.txt` and start Django with Gunicorn from `backend/restapi` (for example, `gunicorn restapi.wsgi:application`). Set a strong `SECRET_KEY` environment variable in Render and keep `DEBUG` disabled. Django CORS currently allows the GitHub Pages origin and `http://localhost:5173`. There is no Render deployment workflow or Render service manifest in this repository; backend deployment is managed separately from the GitHub Pages Action.
+
+## Recent project commits and files
+
+The following recent commits document the sample-data testing feature, project setup, and deployment work. File paths are relative to the repository root.
+
+| Commit | Change | Files changed |
+|---|---|---|
+| `9c9ee0c` — added readme | Added the initial project documentation. | `README.md` |
+| `b0991e3` — feat: testing feature: | Added Test Mode sample values and related form-state and styling updates across the form steps. | `frontend/src/Components/MultiStepForm.jsx`; `frontend/src/Components/steps/EducationDetails.jsx`; `frontend/src/Components/steps/HobbiesStrengths.jsx`; `frontend/src/Components/steps/PersonalDetails.jsx`; `frontend/src/Components/steps/Skills.jsx`; `frontend/src/Components/steps/WorkExperience.jsx`; `frontend/src/context/FormContext.jsx`; `frontend/src/styles/MultiStepForm.css` |
+| `b6550d5` — added requiremnts.txt | Added the backend Python dependency list. | `backend/requirements.txt` |
+| `a2dabf3` — Prepare project for deployment | Added Gunicorn for serving Django and changed Django settings to read deployment secrets from environment variables, disable debug mode, restrict allowed hosts, and limit CORS origins. | `backend/requirements.txt`; `backend/restapi/restapi/settings.py` |
+| `9ccc47c` — Prepare project for deployment | Refined Django deployment settings, enabled the CORS app, and set the allowed frontend origins for local development and GitHub Pages. | `backend/restapi/restapi/settings.py` |
+| `a9dbcc2` — Configure frontend deployment to GitHub Pages | Added the Pages build-and-deploy workflow, configured the Vite base path and React Router basename, generated a Pages fallback file during build, and switched the frontend API URL to Render. | `.github/workflows/deploy.yaml`; `frontend/package.json`; `frontend/src/api/api.js`; `frontend/src/main.jsx`; `frontend/vite.config.js` |
 
 ## Try the website with sample data
 
@@ -158,7 +182,7 @@ Phone validation currently expects a 10-digit Indian number, optionally prefixed
 
 ## Current limitations
 
-- The API base URL is hard-coded to the local development backend in `frontend/src/api/api.js`; a deployed frontend needs a reachable API URL and appropriate CORS configuration.
+- The API base URL is currently hard-coded to the Render service in `frontend/src/api/api.js`; local backend testing requires changing it to the local API address.
 - Django is configured with SQLite, but the current resume flow does not create or retrieve saved resumes.
 - Form values are not persisted between page loads.
 - The backend has no automated API tests yet.
