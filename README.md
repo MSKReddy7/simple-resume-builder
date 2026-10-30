@@ -119,20 +119,7 @@ The deployed application uses two separate services:
 
 The Pages build uses Node.js 22, runs `npm ci` and `npm run build`, then uploads `frontend/dist` and deploys it. The frontend build is configured for the `/simple-resume-builder/` project path, and creates a `404.html` fallback for client-side routes.
 
-For the Render backend, configure the service to install dependencies from `backend/requirements.txt` and start Django with Gunicorn from `backend/restapi` (for example, `gunicorn restapi.wsgi:application`). Set a strong `SECRET_KEY` environment variable in Render and keep `DEBUG` disabled. Django CORS currently allows the GitHub Pages origin and `http://localhost:5173`. There is no Render deployment workflow or Render service manifest in this repository; backend deployment is managed separately from the GitHub Pages Action.
-
-## Recent project commits and files
-
-The following recent commits document the sample-data testing feature, project setup, and deployment work. File paths are relative to the repository root.
-
-| Commit | Change | Files changed |
-|---|---|---|
-| `9c9ee0c` — added readme | Added the initial project documentation. | `README.md` |
-| `b0991e3` — feat: testing feature: | Added Test Mode sample values and related form-state and styling updates across the form steps. | `frontend/src/Components/MultiStepForm.jsx`; `frontend/src/Components/steps/EducationDetails.jsx`; `frontend/src/Components/steps/HobbiesStrengths.jsx`; `frontend/src/Components/steps/PersonalDetails.jsx`; `frontend/src/Components/steps/Skills.jsx`; `frontend/src/Components/steps/WorkExperience.jsx`; `frontend/src/context/FormContext.jsx`; `frontend/src/styles/MultiStepForm.css` |
-| `b6550d5` — added requiremnts.txt | Added the backend Python dependency list. | `backend/requirements.txt` |
-| `a2dabf3` — Prepare project for deployment | Added Gunicorn for serving Django and changed Django settings to read deployment secrets from environment variables, disable debug mode, restrict allowed hosts, and limit CORS origins. | `backend/requirements.txt`; `backend/restapi/restapi/settings.py` |
-| `9ccc47c` — Prepare project for deployment | Refined Django deployment settings, enabled the CORS app, and set the allowed frontend origins for local development and GitHub Pages. | `backend/restapi/restapi/settings.py` |
-| `a9dbcc2` — Configure frontend deployment to GitHub Pages | Added the Pages build-and-deploy workflow, configured the Vite base path and React Router basename, generated a Pages fallback file during build, and switched the frontend API URL to Render. | `.github/workflows/deploy.yaml`; `frontend/package.json`; `frontend/src/api/api.js`; `frontend/src/main.jsx`; `frontend/vite.config.js` |
+For the Render backend, configure the service to install dependencies from `backend/requirements.txt` and start Django with Gunicorn from `backend/restapi` (for example, `gunicorn restapi.wsgi:application`). Set a strong `SECRET_KEY` environment variable in Render and keep `DEBUG` disabled. Django CORS currently allows the GitHub Pages origin and `http://localhost:5173`.
 
 ## Try the website with sample data
 
@@ -164,7 +151,7 @@ python manage.py check
 python manage.py test
 ```
 
-The backend's `api/tests.py` currently contains only the generated empty test scaffold, so `manage.py test` does not yet exercise the validation endpoints. The commands above check Django configuration and run the test discovery command; use the manual workflow in the previous section to test the current form and API behavior.
+Use the manual workflow in the previous section to test the current form and API behavior.
 
 ## Validation endpoints
 
@@ -179,11 +166,3 @@ All endpoints accept JSON `POST` requests under `/api/validate/`:
 | `/others/` | Hobbies and strengths are both required |
 
 Phone validation currently expects a 10-digit Indian number, optionally prefixed with `+91`. These checks describe the current implementation; they are not a guarantee that resume content is factually correct or ready for a particular job application.
-
-## Current limitations
-
-- The API base URL is currently hard-coded to the Render service in `frontend/src/api/api.js`; local backend testing requires changing it to the local API address.
-- Django is configured with SQLite, but the current resume flow does not create or retrieve saved resumes.
-- Form values are not persisted between page loads.
-- The backend has no automated API tests yet.
-- Template and PDF appearance may vary with browser rendering and content length.
