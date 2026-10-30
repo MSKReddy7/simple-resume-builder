@@ -4,8 +4,8 @@ import { useToast } from '../../context/ToastContext';
 import '../../styles/MultiStepForm.css';
 import { validateSkills } from '../../api/api';
 
-const Skills = () => {
-  const { formData, addSkill, removeSkill, updateSkill, nextStep, prevStep } =
+const Skills = ({ Skills }) => {
+  const { formData, addSkill, removeSkill, updateSkill, nextStep, prevStep, updateFormData } =
     useFormContext();
   const showToast  = useToast();
 
@@ -76,6 +76,9 @@ const Skills = () => {
       <div className="form-navigation">
         <button className="btn btn-back" onClick={prevStep}>
           ← Back
+        </button>
+        <button className="btn btn-test" onClick={() => updateFormData(Skills)}>
+          Fill all Fields (Test Mode)
         </button>
         <button className="btn btn-next" onClick={handleNext}>
           Next →

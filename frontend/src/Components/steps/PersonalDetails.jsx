@@ -1,8 +1,10 @@
+import { useEffect } from 'react';
 import { useFormContext } from '../../context/FormContext';
 import { useToast } from '../../context/ToastContext';
 import '../../styles/MultiStepForm.css';
 import { validatePersonal } from "../../api/api"
-const PersonalDetails = () => {
+
+const PersonalDetails = ({ PersonalDetails }) => {
   const { formData, updateFormData, nextStep } = useFormContext();
   const  showToast  = useToast();
 
@@ -14,7 +16,6 @@ const PersonalDetails = () => {
       "address": formData.address,
       "summary": formData.summary
     }
-  
     const response = await validatePersonal(data);
 
     if (response.error) {
@@ -91,6 +92,9 @@ const PersonalDetails = () => {
       </div>
 
       <div className="form-navigation">
+         <button className="btn btn-test" onClick={() => updateFormData(PersonalDetails)}>
+          Fill all Feilds(Test Mode)
+        </button>
         <button className="btn btn-next" onClick={handleNext}>
           Next →
         </button>

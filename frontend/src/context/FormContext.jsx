@@ -14,97 +14,97 @@ export const useFormContext = () => {
 export const FormProvider = ({ children }) => {
   const [currentStep, setCurrentStep] = useState(1);
 
-  // const [formData, setFormData] = useState({
-  //   fullName: '',
-  //   email: '',
-  //   phone: '',
-  //   address: '',
-  //   summary: '',
-  //   education: [{id:"1",degree:"",college:"",endDate:"",grade:""},],
-  //   experience: [],
-  //   skills: [{id:"1",name:"",level:0},],
-  //   hobbies: '',
-  //   strengths: '',
-  //   selectedTemplate: null,
-  // });
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    address: '',
+    summary: '',
+    education: [{id:"1",degree:"",college:"",endDate:"",grade:""},],
+    experience: [],
+    skills: [{id:"1",name:"",level:0},],
+    hobbies: '',
+    strengths: '',
+    selectedTemplate: null,
+  });
   
-  const [formData, setFormData] = useState(
-    {
-      "fullName": "Chirla Manoj Sai Kumar Reddy",
-      "email": "manojreddy@gmail.com",
-      "phone": "9876543210",
-      "address": "Guntur, Andhra Pradesh, India",
-      "summary": "Passionate and detail-oriented software engineer with strong knowledge in React, Bootstrap, and modern web development. Dedicated to creating responsive and user-friendly applications with clean code and efficient logic.",
-      "education": [
-          {
-              "id": "1763067102518",
-              "degree": "B.Tech in Computer Science and Engineering",
-              "college": "VIT University, Vellore",
-              "endDate": "2024-10-10",
-              "grade": "8.6 CGPA"
-          },
-          {
-              "id": "1763067159670",
-              "degree": "Intermediate (MPC)",
-              "college": "Narayana Junior College, Vijayawada",
-              "endDate": "2020-10-10",
-              "grade": "95%"
-          }
-      ],
-      "experience": [
-          {
-              "id": "1763067195433",
-              "jobTitle": "Frontend Developer",
-              "company": "TechNova Pvt. Ltd.",
-              "startDate": "2023-10-10",
-              "endDate": "",
-              "isCurrent": true,
-              "location": "Hyderabad, India",
-              "description": "Developing responsive UI using React.js and Bootstrap, improving performance by 30% through component optimization."
-          },
-          {
-              "id": "1763067370326",
-              "jobTitle": "Web Development Intern",
-              "company": "CodeCrafters Labs",
-              "startDate": "2023-10-10",
-              "endDate": "1101-02-02",
-              "isCurrent": false,
-              "location": "Remote",
-              "description": "Assisted in developing internal dashboards and API integration using RESTful architecture with Axios and Node.js"
-          }
-      ],
-      "skills": [
-          {
-              "id": "1763067507443",
-              "name": "React.js",
-              "level": 5
-          },
-          {
-              "id": "1763067528141",
-              "name": "Bootstrap",
-              "level": 4
-          },
-          {
-              "id": "1763067541786",
-              "name": "Node.js",
-              "level": 3
-          },
-          {
-              "id": "1763067552269",
-              "name": "MongoDB",
-              "level": 3
-          },
-          {
-              "id": "1763067561025",
-              "name": "Git & GitHub",
-              "level": 4
-          }
-      ],
-      "hobbies": "Chess, Blogging, Music, Open Source Contribution",
-      "strengths": "Problem Solving, Adaptability, Creative Thinking, Team Collaboration",
-      "selectedTemplate": null
-  }
-  );
+  // const [formData, setFormData] = useState(
+  //   {
+  //     "fullName": "Chirla Manoj Sai Kumar Reddy",
+  //     "email": "manojreddy@gmail.com",
+  //     "phone": "9876543210",
+  //     "address": "Guntur, Andhra Pradesh, India",
+  //     "summary": "Passionate and detail-oriented software engineer with strong knowledge in React, Bootstrap, and modern web development. Dedicated to creating responsive and user-friendly applications with clean code and efficient logic.",
+  //     "education": [
+  //         {
+  //             "id": "1763067102518",
+  //             "degree": "B.Tech in Computer Science and Engineering",
+  //             "college": "VIT University, Vellore",
+  //             "endDate": "2024-10-10",
+  //             "grade": "8.6 CGPA"
+  //         },
+  //         {
+  //             "id": "1763067159670",
+  //             "degree": "Intermediate (MPC)",
+  //             "college": "Narayana Junior College, Vijayawada",
+  //             "endDate": "2020-10-10",
+  //             "grade": "95%"
+  //         }
+  //     ],
+  //     "experience": [
+  //         {
+  //             "id": "1763067195433",
+  //             "jobTitle": "Frontend Developer",
+  //             "company": "TechNova Pvt. Ltd.",
+  //             "startDate": "2023-10-10",
+  //             "endDate": "",
+  //             "isCurrent": true,
+  //             "location": "Hyderabad, India",
+  //             "description": "Developing responsive UI using React.js and Bootstrap, improving performance by 30% through component optimization."
+  //         },
+  //         {
+  //             "id": "1763067370326",
+  //             "jobTitle": "Web Development Intern",
+  //             "company": "CodeCrafters Labs",
+  //             "startDate": "2023-10-10",
+  //             "endDate": "1101-02-02",
+  //             "isCurrent": false,
+  //             "location": "Remote",
+  //             "description": "Assisted in developing internal dashboards and API integration using RESTful architecture with Axios and Node.js"
+  //         }
+  //     ],
+  //     "skills": [
+  //         {
+  //             "id": "1763067507443",
+  //             "name": "React.js",
+  //             "level": 5
+  //         },
+  //         {
+  //             "id": "1763067528141",
+  //             "name": "Bootstrap",
+  //             "level": 4
+  //         },
+  //         {
+  //             "id": "1763067541786",
+  //             "name": "Node.js",
+  //             "level": 3
+  //         },
+  //         {
+  //             "id": "1763067552269",
+  //             "name": "MongoDB",
+  //             "level": 3
+  //         },
+  //         {
+  //             "id": "1763067561025",
+  //             "name": "Git & GitHub",
+  //             "level": 4
+  //         }
+  //     ],
+  //     "hobbies": "Chess, Blogging, Music, Open Source Contribution",
+  //     "strengths": "Problem Solving, Adaptability, Creative Thinking, Team Collaboration",
+  //     "selectedTemplate": null
+  // }
+  // );
 
   const updateFormData = (data) => {
     setFormData((prev) => ({ ...prev, ...data }));
