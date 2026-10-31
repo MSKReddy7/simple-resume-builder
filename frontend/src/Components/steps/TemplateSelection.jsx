@@ -7,7 +7,7 @@ import Template2 from "../Template2";
 import Template3 from "../Template3";
 import template1Img from "../../imgs/t1.jpg";
 import template2Img from "../../imgs/t2.jpg";
-import template3Img from "../../imgs/t3.png";
+import template3Img from "../../imgs/t3.jpg";
 import { Button, Modal } from "react-bootstrap";
 
 const templates = [
