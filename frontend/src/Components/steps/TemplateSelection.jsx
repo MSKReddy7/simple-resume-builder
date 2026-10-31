@@ -5,6 +5,9 @@ import "../../styles/MultiStepForm.css";
 import Template1 from "../Template1";
 import Template2 from "../Template2";
 import Template3 from "../Template3";
+import template1Img from "../imgs/t1.jpg";
+import template2Img from "../imgs/t2.jpg";
+import template3Img from "../imgs/t3.png";
 import { Button, Modal } from "react-bootstrap";
 
 const templates = [
@@ -12,25 +15,24 @@ const templates = [
         id: 1,
         name: "Modern",
         icon: "📄",
-        img:"./src/imgs/t1.jpg",
+        img: template1Img,
         component: <Template1 />,
     },
     {
         id: 2,
         name: "Creative",
         icon: "🎨",
-        img: "./src/imgs/t2.jpg",
-        component: <Template2/>,
+        img: template2Img,
+        component: <Template2 />,
     },
     {
         id: 3,
         name: "Professional",
         icon: "💼",
-        img:"./src/imgs/t3.jpg",
-        component: <Template3/>,
+        img: template3Img,
+        component: <Template3 />,
     },
 ];
-
 
 const TemplateSelection = () => {
     const [show, setShow] = useState(false);
