@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useFormContext } from "../../context/FormContext";
 import { useToast } from "../../context/ToastContext";
 import "../../styles/MultiStepForm.css";
 import Template1 from "../Template1";
 import Template2 from "../Template2";
 import Template3 from "../Template3";
-import template1Img from "../imgs/t1.jpg";
-import template2Img from "../imgs/t2.jpg";
-import template3Img from "../imgs/t3.png";
+import template1Img from "../../imgs/t1.jpg";
+import template2Img from "../../imgs/t2.jpg";
+import template3Img from "../../imgs/t3.png";
 import { Button, Modal } from "react-bootstrap";
 
 const templates = [
@@ -65,15 +65,14 @@ const TemplateSelection = () => {
                 {templates.map((template) => (
                     <div
                         key={template.id}
-                        className={`template-card ${
-                            formData.selectedTemplate === template.id
-                                ? "selected"
-                                : ""
-                        }`}
+                        className={`template-card ${formData.selectedTemplate === template.id
+                            ? "selected"
+                            : ""
+                            }`}
                         onClick={() => handleTemplateSelect(template.id)}
                     >
                         <div className="template-preview">
-                            <img src={`${template.img}`} height="480px" width="350px" alt="User" />
+                            <img src={template.img} height="480px" width="350px" alt={template.name} />
                         </div>
                         <div className="template-name">{template.name}</div>
                     </div>
