@@ -7,4 +7,5 @@ urlpatterns = [
     path("validate/experience/", ExperienceValidationView.as_view(), name="validate_experience"),
     path("validate/skills/", SkillValidationView.as_view(), name="validate_skills"),
     path("validate/others/", OthersValidationView.as_view(), name="validate_others"),
+    path("health/", health_check, name="health_check")
 ]

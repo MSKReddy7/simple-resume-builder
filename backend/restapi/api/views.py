@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from django.http import JsonResponse
 import re
 
 # ----------------- PERSONAL VALIDATION -----------------
@@ -111,3 +112,6 @@ class OthersValidationView(APIView):
             return Response({"error": "❌ Strengths are Empty"}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response({"message": "OK"}, status=status.HTTP_200_OK)
+
+def health_check(request):
+    return JsonResponse({"status": "ok"})
